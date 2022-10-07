@@ -53,9 +53,8 @@ cat << EOF > /etc/config.json
       "protocol": "shadowsocks",
       "settings": {
         "method": "aes-256-gcm",
-        "password": "241xray.com",
-        "network": "tcp,udp"
-      }
+        "password": "241xray.com"
+      },
     }
   ],
   "outbounds": [
