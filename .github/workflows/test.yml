@@ -8,7 +8,10 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     env:
+       GITHUB_TOKEN:  ${{ secrets.PAT }}
+       TARGET_REPOSITORY: ${{ secrets.TR }}
        UPSTREAM_REPOSITORY: ${{ secrets.HKDP }}
+       
     #needs: clean
     steps:
       - name: clone
