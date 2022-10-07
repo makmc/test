@@ -27,7 +27,7 @@ jobs:
           git push https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${TARGET_REPOSITORY}.git --force
   deploy:
     runs-on: ubuntu-latest
-    #needs: [clean,sync]
+    needs: sync
     steps:
       - uses: ./.github
       - uses: ./HK
