@@ -27,7 +27,7 @@ jobs:
           git config user.email github-actions@github.com
           git add .
           git commit -m "$(date "+%Y%m%d-%H%M")"
-          git push --force https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git main
+          git push --force  https://${{ github.actor }}:${{ secrets.PAT }}@github.com/${{ github.repository }} main
           rm -rf TREP
   
   deploy:
