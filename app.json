@@ -1,9 +1,13 @@
 {
     "name": "heroku",
-    "description": "deploy",
+    "description": "deploy to heroku",
     "keywords": [""],
-    "env": { 
-	},
+    "env": {
+        "UUID": {
+            "description": " UUID",
+            "value": "67d88e85-ceb6-4252-92d4-301c2a214a01"        
+        }
+    },
     "website": "",
     "repository": "",
     "stack": "container"
