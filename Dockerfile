@@ -1,12 +1,12 @@
-FROM alpine:edge
+FROM golang:alpine AS builder
+RUN apk update && apk add --no-cache git
+WORKDIR /go/src/xray/core
+RUN git clone --progress https://github.com/XTLS/Xray-core.git . && \
+    go mod download && \
+    CGO_ENABLED=0 go build -o /tmp/xray -trimpath -ldflags "-s -w -buildid=" ./main
 
-RUN apk update && \
-    apk add --no-cache ca-certificates tor wget && \
-    wget -O Xray-linux-64.zip  https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip  && \
-    unzip Xray-linux-64.zip && \
-    chmod +x /xray && \
-    rm -rf /var/cache/apk/* && \
-    ntpd -d -q -n -p 0.pool.ntp.org
+FROM alpine
+COPY --from=builder /tmp/xray /usr/bin
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
