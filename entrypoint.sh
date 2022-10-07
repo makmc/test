@@ -5,7 +5,8 @@ cat << EOF > /etc/config.json
 {
   "inbounds":[
     {
-      "port": $PORT,
+      "listen": "127.0.0.1",
+      "port": 4324,
       "protocol": "shadowsocks",
       "settings": {
          "method": "2022-blake3-aes-128-gcm",
