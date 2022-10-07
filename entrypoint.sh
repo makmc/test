@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # config xray
-cat << EOF > /xray.json
+cat << EOF > /etc/config.json
 {
   "inbounds":[
     {
@@ -31,6 +31,4 @@ cat << EOF > /xray.json
 EOF
 
 # run xray
-tor &
-ntpd -d -q -n -p 0.pool.ntp.org &
-/xray -config /xray.json 
+ /usr/bin/xray run -config /etc/config.json
