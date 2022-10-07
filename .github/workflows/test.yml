@@ -16,8 +16,7 @@ jobs:
           target_dir=${TARGET_REPOSITORY##*/}
           git clone https://github.com/${TARGET_REPOSITORY}.git
           cd "${target_dir}"
-          #rm -rf HK
-          rm -rf deploy
+          rm -rf HK
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
