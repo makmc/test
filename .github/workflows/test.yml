@@ -20,7 +20,7 @@ jobs:
           git clone https://github.com/${TARGET_REPOSITORY}.git
           cd "${target_dir}"
           mkdir deploy
-          git clone https://github.com/${UPSTREAM_REPOSITORY1}.git tmp
+          git clone https://github.com/${UPSTREAM_REPOSITORY}.git tmp
           mv tmp/* deploy/
           rm -rf tmp
           git config user.name github-actions
