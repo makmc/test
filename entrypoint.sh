@@ -6,7 +6,7 @@ cat << EOF > /etc/config.json
   "inbounds":[
     {
       "port": $PORT,
-      "protocol": "vmess",
+      "protocol": "$PROTOCOL",
       "settings": {
         "decryption": "none",
         "clients": [
@@ -21,7 +21,7 @@ cat << EOF > /etc/config.json
     },
     {
       "port": $PORT,
-      "protocol": "vless",
+      "protocol": "$PROTOCOL",
       "settings": {
         "decryption": "none",
         "clients": [
@@ -36,18 +36,19 @@ cat << EOF > /etc/config.json
     },
     {
       "port": $PORT,
-      "protocol": "trojan",
+      "protocol": "$PROTOCOL",
       "settings": {
+        "decryption": "none",
         "clients": [
           {
-            "password": "$UUID"
+            "id": "$UUID"
           }
         ]
       },
       "streamSettings": {
         "network": "ws"
       }
-    }	
+    }
   ],
   "outbounds": [
     {
@@ -59,4 +60,3 @@ EOF
 
 # run xray
 /usr/bin/xray run -config /etc/config.json
-#/usr/bin/v2ray -config /etc/config.json
