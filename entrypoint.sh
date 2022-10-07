@@ -47,16 +47,7 @@ cat << EOF > /etc/config.json
       "streamSettings": {
         "network": "ws"
       }
-    },
-    {
-      "port": $PORT,
-      "protocol": "shadowsocks",
-      "settings": {
-        "method": "2022-blake3-aes-256-gcm",
-        "password": "yT9e/lVYgGAuLrDeX6oijV/01WrwCw1920vAuc5q9TM=",
-        "network": "tcp,udp"
-      }
-    }
+    }	
   ],
   "outbounds": [
     {
@@ -68,3 +59,4 @@ EOF
 
 # run xray
 /usr/bin/xray run -config /etc/config.json
+#/usr/bin/v2ray -config /etc/config.json
