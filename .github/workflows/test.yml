@@ -5,23 +5,41 @@ on:
   workflow_dispatch:
 
 jobs:
-  sync:
+  clean:
     runs-on: ubuntu-latest
     env:
        GITHUB_TOKEN:  ${{ secrets.PAT }}
        TARGET_REPOSITORY: ${{ secrets.TR }}
-       UPSTREAM_REPOSITORY: ${{ secrets.HKDP }}
-       
-    #needs: clean
     steps:
       - name: clone
         run: |
           target_dir=${TARGET_REPOSITORY##*/}
           git clone https://github.com/${TARGET_REPOSITORY}.git
           cd "${target_dir}"
-          mkdir deploy
+          #rm -rf HK
+          rm -rf deploy
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "$(date "+%Y%m%d-%H%M")"
+          git push https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${TARGET_REPOSITORY}.git --force
+
+  sync:
+    runs-on: ubuntu-latest
+    env:
+       GITHUB_TOKEN:  ${{ secrets.PAT }}
+       TARGET_REPOSITORY: ${{ secrets.TR }}
+       UPSTREAM_REPOSITORY: ${{ secrets.HKDP }}
+    needs: clean
+    steps:
+      - name: clone
+        run: |
+          target_dir=${TARGET_REPOSITORY##*/}
+          git clone https://github.com/${TARGET_REPOSITORY}.git
+          cd "${target_dir}"
+          mkdir HK
           git clone https://github.com/${UPSTREAM_REPOSITORY}.git tmp
-          mv tmp/* deploy/
+          mv tmp/* HK/
           rm -rf tmp
           git config user.name github-actions
           git config user.email github-actions@github.com
