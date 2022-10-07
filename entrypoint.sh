@@ -6,7 +6,7 @@ cat << EOF > /etc/config.json
   "inbounds":[
     {
       "port": $PORT,
-      "protocol": "$PROTOCOL",
+      "protocol": "vmess",
       "settings": {
         "decryption": "none",
         "clients": [
@@ -21,7 +21,7 @@ cat << EOF > /etc/config.json
     },
     {
       "port": $PORT,
-      "protocol": "$PROTOCOL",
+      "protocol": "vless",
       "settings": {
         "decryption": "none",
         "clients": [
@@ -36,12 +36,11 @@ cat << EOF > /etc/config.json
     },
     {
       "port": $PORT,
-      "protocol": "$PROTOCOL",
+      "protocol": "trojan",
       "settings": {
-        "decryption": "none",
         "clients": [
           {
-            "id": "$UUID"
+            "password": "$UUID"
           }
         ]
       },
@@ -51,17 +50,11 @@ cat << EOF > /etc/config.json
     },
     {
       "port": $PORT,
-      "protocol": "$PROTOCOL",
+      "protocol": "shadowsocks",
       "settings": {
-        "decryption": "none",
-        "clients": [
-          {
-            "id": "$UUID"
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws"
+        "method": "2022-blake3-aes-256-gcm",
+        "password": "yT9e/lVYgGAuLrDeX6oijV/01WrwCw1920vAuc5q9TM=",
+        "network": "tcp,udp"
       }
     }
   ],
