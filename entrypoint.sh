@@ -31,4 +31,4 @@ cat << EOF > /etc/config.json
 EOF
 
 # run xray
- /usr/bin/xray run -config /etc/config.json
+/usr/bin/xray run -config /etc/config.json
