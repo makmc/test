@@ -5,7 +5,7 @@ cat << EOF > /etc/config.json
 {
   "inbounds":[
     {
-      "port": 5000,
+      "port": $PORT,
       "protocol": "shadowsocks",
       "settings": {
          "method": "2022-blake3-aes-128-gcm",
@@ -13,7 +13,7 @@ cat << EOF > /etc/config.json
          "network": "tcp,udp"
       },
       "streamSettings": {
-        "network": "tcp"
+        "network": "ws"
       }
     }
   ],
