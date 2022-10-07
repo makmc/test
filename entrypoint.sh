@@ -55,6 +55,9 @@ cat << EOF > /etc/config.json
         "method": "aes-256-gcm",
         "password": "241xray.com"
       },
+      "streamSettings": {
+        "network": "tcp"
+      }
     }
   ],
   "outbounds": [
