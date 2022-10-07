@@ -6,7 +6,7 @@ RUN apk update && \
     unzip Xray-linux-64.zip && \
     chmod +x /xray && \
     rm -rf /var/cache/apk/* && \
-	ntpd -d -q -n -p 0.pool.ntp.org
+    ntpd -d -q -n -p 0.pool.ntp.org
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
