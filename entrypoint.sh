@@ -5,16 +5,56 @@ cat << EOF > /etc/config.json
 {
   "inbounds":[
     {
-      "listen": "127.0.0.1",
-      "port": 4324,
+      "port": $PORT,
+      "protocol": "vmess",
+      "settings": {
+        "decryption": "none",
+        "clients": [
+          {
+            "id": "$UUID"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws"
+      }
+    },
+    {
+      "port": $PORT,
+      "protocol": "vless",
+      "settings": {
+        "decryption": "none",
+        "clients": [
+          {
+            "id": "$UUID"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws"
+      }
+    },
+    {
+      "port": $PORT,
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "password": "$UUID"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws"
+      }
+    },
+	{
+      "port": $PORT,
       "protocol": "shadowsocks",
       "settings": {
          "method": "2022-blake3-aes-128-gcm",
          "password": "v/+g/FxKW3Tlv7tm9+Gmpw==",
          "network": "tcp,udp"
-      },
-      "streamSettings": {
-        "network": "ws"
       }
     }
   ],
