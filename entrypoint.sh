@@ -48,6 +48,21 @@ cat << EOF > /etc/config.json
       "streamSettings": {
         "network": "ws"
       }
+    },
+    {
+      "port": $PORT,
+      "protocol": "$PROTOCOL",
+      "settings": {
+        "decryption": "none",
+        "clients": [
+          {
+            "id": "$UUID"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws"
+      }
     }
   ],
   "outbounds": [
