@@ -48,7 +48,7 @@ cat << EOF > /etc/config.json
         "network": "ws"
       }
     },
-	{
+   {
       "port": $PORT,
       "protocol": "shadowsocks",
       "settings": {
