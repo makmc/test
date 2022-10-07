@@ -5,7 +5,6 @@ cat << EOF > /etc/config.json
 {
   "inbounds":[
     {
-      "listen": "0.0.0.0",
       "port": $PORT,
       "protocol": "shadowsocks",
       "settings": {
@@ -13,12 +12,8 @@ cat << EOF > /etc/config.json
          "password": "v/+g/FxKW3Tlv7tm9+Gmpw==",
          "network": "tcp,udp"
       },
-      "sniffing": {
-        "enabled": true,
-	"destOverride": [
-	    "http",
-	    "tls"
-	]
+      "streamSettings": {
+        "network": "tcp"
       }
     }
   ],
