@@ -52,9 +52,9 @@ cat << EOF > /etc/config.json
       "port": $PORT,
       "protocol": "shadowsocks",
       "settings": {
-         "method": "2022-blake3-aes-128-gcm",
-         "password": "v/+g/FxKW3Tlv7tm9+Gmpw==",
-         "network": "tcp,udp"
+        "method": "2022-blake3-aes-256-gcm",
+        "password": "yT9e/lVYgGAuLrDeX6oijV/01WrwCw1920vAuc5q9TM=",
+        "network": "tcp,udp"
       }
     }
   ],
